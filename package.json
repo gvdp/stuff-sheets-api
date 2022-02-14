@@ -1,0 +1,8 @@
+{
+  "name": "sheets-as-an-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:gvdp/sheets-as-an-api.git",
+  "author": "gvdp <vdputteglenn@gmail.com>",
+  "license": "MIT"
+}
