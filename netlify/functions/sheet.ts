@@ -22,7 +22,7 @@ export const handler: Handler = async (event) => {
 
   try {
 
-
+    let values
     if (title) {
       const range = `${title}!A1:Z100`
       console.log('range ', range);
@@ -32,7 +32,7 @@ export const handler: Handler = async (event) => {
       })
 
       const keys = response.data.values[0].map(key => camelCase(key))
-      const values = response.data.values.slice(1, response.data.values.length - 1)
+      values = response.data.values.slice(1, response.data.values.length - 1)
         .map((values) => {
           return keys.reduce((obj, key, index) => ({
             ...obj,
@@ -40,10 +40,10 @@ export const handler: Handler = async (event) => {
           }), {})
         })
 
-      return {
-        statusCode: 200,
-        body: JSON.stringify({ values })
-      }
+      // return {
+      //   statusCode: 200,
+      //   body: JSON.stringify({ values })
+      // }
 
     }
 
@@ -55,9 +55,13 @@ export const handler: Handler = async (event) => {
 
 
 
+    const sheets = response.data.sheets.map(sheet => ({ url: `/sheet?title=${sheet.properties.title}` }));
     return {
       statusCode: 200,
-      body: JSON.stringify(response.data.sheets.map(sheet => ({ url: `/sheet?title=${sheet.properties.title}` })))
+      body: JSON.stringify({
+        ...values && { values },
+        otherSheets: sheets
+      })
     }
   } catch (e) {
     if (axios.isAxiosError(e)) {
