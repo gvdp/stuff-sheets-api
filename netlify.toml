@@ -10,6 +10,23 @@
   #  from = "/*"
   #  to = "/index.html"
   #  status = 200
+[[redirects]]
+  force = true
+  from = '/'
+  status = 200
+  to = '/.netlify/functions/index'
+
+# [[redirects]]
+#   force = true
+#   from = '/sheet/:sheetTitle'
+#   status = 200
+#   to = '/.netlify/functions/sheet/:splat'
+
+[[redirects]]
+  force = true
+  from = '/*'
+  status = 200
+  to = '/.netlify/functions/:splat'
 
   ## (optional) Settings for Netlify Dev
   ## https://github.com/netlify/cli/blob/main/docs/netlify-dev.md#project-detection
