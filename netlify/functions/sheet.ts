@@ -60,7 +60,7 @@ export const handler: Handler = async (event) => {
       statusCode: 200,
       body: JSON.stringify({
         ...values && { values },
-        otherSheets: sheets
+        sheets
       })
     }
   } catch (e) {
