@@ -93,8 +93,8 @@ token = await  getTokenFromRefresh(refreshToken)
 export async function getTokenFromRefresh(refreshToken: string): Promise<string> {
   console.log('refreshing token')
   const params = qs.stringify({
-    client_id: process.env.VITE_GOOGLE_CLIENT_ID,
-    client_secret: process.env.VITE_GOOGLE_CLIENT_SECRET,
+    client_id: process.env.GOOGLE_CLIENT_ID,
+    client_secret: process.env.GOOGLE_CLIENT_SECRET,
     refresh_token: refreshToken,
     grant_type: 'refresh_token'
   })

@@ -3,7 +3,7 @@ import axios, { AxiosRequestConfig } from 'axios'
 
 export function createAuthUrl(redirect_uri: string, scope: string): string {
   let authUrl = 'https://accounts.google.com/o/oauth2/v2/auth'
-  authUrl += `?client_id=${process.env.VITE_GOOGLE_CLIENT_ID}`
+  authUrl += `?client_id=${process.env.GOOGLE_CLIENT_ID}`
   authUrl += `&redirect_uri=${redirect_uri}`
   authUrl += `&response_type=code`
   authUrl += `&prompt=consent`
@@ -16,8 +16,8 @@ export async function fetchTokens(code: string, redirect_uri: string): Promise<{
   console.log('getting token using code')
   const params = qs.stringify({
     code,
-    client_id: process.env.VITE_GOOGLE_CLIENT_ID,
-    client_secret: process.env.VITE_GOOGLE_CLIENT_SECRET,
+    client_id: process.env.GOOGLE_CLIENT_ID,
+    client_secret: process.env.GOOGLE_CLIENT_SECRET,
     redirect_uri,
     grant_type: 'authorization_code'
   })
@@ -44,8 +44,8 @@ export async function fetchTokens(code: string, redirect_uri: string): Promise<{
 export async function refreshToken(refreshToken: string) {
   console.log('refreshing token')
   const params = qs.stringify({
-    client_id: process.env.VITE_GOOGLE_CLIENT_ID,
-    client_secret: process.env.VITE_GOOGLE_CLIENT_SECRET,
+    client_id: process.env.GOOGLE_CLIENT_ID,
+    client_secret: process.env.GOOGLE_CLIENT_SECRET,
     refresh_token: refreshToken,
     grant_type: 'refresh_token'
   })
