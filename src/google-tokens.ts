@@ -42,7 +42,7 @@ export async function fetchTokens(code: string, redirect_uri: string): Promise<{
 }
 
 export async function refreshToken(refreshToken: string) {
-  console.log('refreshing token')
+  console.log('refreshing token with ', process.env)
   const params = qs.stringify({
     client_id: process.env.GOOGLE_CLIENT_ID,
     client_secret: process.env.GOOGLE_CLIENT_SECRET,
@@ -61,8 +61,8 @@ export async function refreshToken(refreshToken: string) {
     console.log('got access token', resp.data)
     return resp.data
   } catch (e) {
-    console.log('err in fetching token')
-    console.error(e)
+    console.log('err in fetching token ', e.response.data)
+    // console.error(e)
     throw new Error('Token refresh failed ')
   }
 }
