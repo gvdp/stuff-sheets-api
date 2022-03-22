@@ -7,11 +7,11 @@ import qs from 'qs'
 export const handler: Handler = async (event) => {
   const { title } = event.queryStringParameters as { title: string }
 
-  console.log('queryparams = ', event.queryStringParameters);
+  console.log(new Date(), 'calling sheets with queryparams = ', event.queryStringParameters);
 
   let token = process.env.ACCESS_TOKEN
   const refreshToken = process.env.REFRESH_TOKEN
-console.log(token, refreshToken);
+// console.log(token, refreshToken);
 // console.log(process.env);
 
   if (!(token || refreshToken)) {
@@ -37,7 +37,7 @@ token = await  getTokenFromRefresh(refreshToken)
     let values
     if (title) {
       const range = `${title}!A1:Z100`
-      console.log('range ', range);
+      // console.log('range ', range);
 
       const response: any = await axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}`, {
         headers: { Authorization: `Bearer ${token}` }
@@ -70,6 +70,9 @@ token = await  getTokenFromRefresh(refreshToken)
     const sheets = response.data.sheets.map(sheet => ({ url: `/sheet?title=${sheet.properties.title}` }));
     return {
       statusCode: 200,
+       headers: {
+      'Cache-Control': 'public, s-maxage=60',
+    },
       body: JSON.stringify({
         ...values && { values },
         sheets
@@ -107,7 +110,7 @@ export async function getTokenFromRefresh(refreshToken: string): Promise<string>
 
   try {
     const resp = await axios.request(options)
-    console.log('got access token', resp.data)
+    // console.log('got access token', resp.data)
     return resp.data.access_token
   } catch (e) {
     console.log('err in fetching token')
