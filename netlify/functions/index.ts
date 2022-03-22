@@ -1,5 +1,5 @@
 import { Handler } from '@netlify/functions'
-import axios, { AxiosError } from 'axios'
+import axios, { Axios, AxiosError } from 'axios'
 import { createAuthUrl, fetchTokens } from '../../src/google-tokens'
 
 export const handler: Handler = async (event) => {
@@ -9,6 +9,9 @@ export const handler: Handler = async (event) => {
 
   // const token = process.env.TOKEN
 
+  if(!code) {
+    return {statusCode: 404}
+  }
   // if (!token) {
   //   return {
   //     statusCode: 301,
@@ -41,7 +44,13 @@ export const handler: Handler = async (event) => {
       `
     }
   } catch (e) {
-    console.log((e as AxiosError).response)
+    if(axios.isAxiosError(e)) {
+
+      console.log((e as AxiosError).response.data)
+    } else {
+      console.log(e);
+      
+    }
     return { statusCode: 500 }
   }
 }

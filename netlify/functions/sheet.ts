@@ -1,22 +1,34 @@
 import { Handler } from '@netlify/functions'
-import axios, { AxiosError } from 'axios'
+import axios, { AxiosError, AxiosRequestConfig } from 'axios'
 import { createAuthUrl } from '../../src/google-tokens'
 import { camelCase } from "camel-case";
+import qs from 'qs'
 
 export const handler: Handler = async (event) => {
   const { title } = event.queryStringParameters as { title: string }
 
   console.log('queryparams = ', event.queryStringParameters);
 
-  const token = process.env.ACCESS_TOKEN
+  let token = process.env.ACCESS_TOKEN
+  const refreshToken = process.env.REFRESH_TOKEN
+console.log(token, refreshToken);
+// console.log(process.env);
 
-  if (!token) {
+  if (!(token || refreshToken)) {
     return {
       statusCode: 301,
       headers: { 'Location': createAuthUrl('http://localhost:8888', 'https://www.googleapis.com/auth/spreadsheets.readonly') },
       // body: createAuthUrl('http://localhost:8888/api/sheet', 'https://www.googleapis.com/auth/spreadsheets.readonly'),
     }
   }
+
+if(!token) {
+
+token = await  getTokenFromRefresh(refreshToken)
+
+}
+
+
   const spreadsheetId = process.env.SHEET_ID
 
 
@@ -66,7 +78,8 @@ export const handler: Handler = async (event) => {
   } catch (e) {
     if (axios.isAxiosError(e)) {
 
-      console.log((e as AxiosError).response)
+      // console.log('axios error', (e as AxiosError).response)
+      console.log('axios error', (e as AxiosError).response?.status)
     } else {
       console.log(e);
 
@@ -75,3 +88,30 @@ export const handler: Handler = async (event) => {
   }
 }
 
+
+
+export async function getTokenFromRefresh(refreshToken: string): Promise<string> {
+  console.log('refreshing token')
+  const params = qs.stringify({
+    client_id: process.env.VITE_GOOGLE_CLIENT_ID,
+    client_secret: process.env.VITE_GOOGLE_CLIENT_SECRET,
+    refresh_token: refreshToken,
+    grant_type: 'refresh_token'
+  })
+  const options: AxiosRequestConfig = {
+    method: 'POST',
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    data: params,
+    url: 'https://oauth2.googleapis.com/token'
+  }
+
+  try {
+    const resp = await axios.request(options)
+    console.log('got access token', resp.data)
+    return resp.data.access_token
+  } catch (e) {
+    console.log('err in fetching token')
+    console.error(e)
+    throw new Error('Token refresh failed ')
+  }
+}
