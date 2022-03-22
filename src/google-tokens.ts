@@ -1,7 +1,7 @@
 import qs from 'qs'
 import axios, { AxiosRequestConfig } from 'axios'
 
-export function createAuthUrl(redirect_uri: string, scope: string): string {
+export function createAuthUrl (redirect_uri: string, scope: string): string {
   let authUrl = 'https://accounts.google.com/o/oauth2/v2/auth'
   authUrl += `?client_id=${process.env.GOOGLE_CLIENT_ID}`
   authUrl += `&redirect_uri=${redirect_uri}`
@@ -12,7 +12,13 @@ export function createAuthUrl(redirect_uri: string, scope: string): string {
   return authUrl
 }
 
-export async function fetchTokens(code: string, redirect_uri: string): Promise<{ expires_in: number; refresh_token: string; access_token: string } | undefined> {
+export async function fetchTokens (
+  code: string,
+  redirect_uri: string
+): Promise<
+  | { expires_in: number; refresh_token: string; access_token: string }
+  | undefined
+> {
   console.log('getting token using code')
   const params = qs.stringify({
     code,
@@ -41,8 +47,7 @@ export async function fetchTokens(code: string, redirect_uri: string): Promise<{
   }
 }
 
-export async function refreshToken(refreshToken: string) {
-  console.log('refreshing token with ', process.env)
+export async function getTokenFromRefresh (refreshToken: string) {
   const params = qs.stringify({
     client_id: process.env.GOOGLE_CLIENT_ID,
     client_secret: process.env.GOOGLE_CLIENT_SECRET,
@@ -58,8 +63,8 @@ export async function refreshToken(refreshToken: string) {
 
   try {
     const resp = await axios.request(options)
-    console.log('got access token', resp.data)
-    return resp.data
+    // console.log('got access token', resp.data)
+    return resp.data.access_token
   } catch (e) {
     console.log('err in fetching token ', e.response.data)
     // console.error(e)

@@ -4,29 +4,17 @@
   functions = "netlify/functions"
   publish = "."
 
-  ## Uncomment to use this redirect for Single Page Applications like create-react-app.
-  ## Not needed for static site generators.
-  #[[redirects]]
-  #  from = "/*"
-  #  to = "/index.html"
-  #  status = 200
 [[redirects]]
   force = true
   from = '/'
   status = 200
   to = '/.netlify/functions/index'
 
-# [[redirects]]
-#   force = true
-#   from = '/sheet/:sheetTitle'
-#   status = 200
-#   to = '/.netlify/functions/sheet/:splat'
-
 [[redirects]]
   force = true
-  from = '/*'
+  from = '/sheet/*'
   status = 200
-  to = '/.netlify/functions/:splat'
+  to = '/.netlify/functions/sheet/:splat'
 
   ## (optional) Settings for Netlify Dev
   ## https://github.com/netlify/cli/blob/main/docs/netlify-dev.md#project-detection
