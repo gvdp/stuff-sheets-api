@@ -74,8 +74,10 @@ export const handler: Handler = async event => {
       )
 
       const keys = response.data.values[0].map(key => camelCase(key))
+      console.log(response.data.values)
+
       values = response.data.values
-        .slice(1, response.data.values.length - 1)
+        .slice(1, response.data.values.length)
         .filter(values => values.length > 0)
         .map(values => {
           return keys.reduce(
