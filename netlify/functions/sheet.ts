@@ -76,6 +76,7 @@ export const handler: Handler = async event => {
       const keys = response.data.values[0].map(key => camelCase(key))
       values = response.data.values
         .slice(1, response.data.values.length - 1)
+        .filter(values => values.length > 0)
         .map(values => {
           return keys.reduce(
             (obj, key, index) => ({
