@@ -38,6 +38,9 @@ export const handler: Handler = async (event) => {
     return {
       statusCode: 200,
       body: `
+
+        ntl env:set ${tokens.refresh_token}
+
         ACCESS_TOKEN=${tokens.access_token}
         REFRESH_TOKEN=${tokens.refresh_token}
         EXPIRES=${String(tokens.expires_in * 1000 + new Date().getTime())}
