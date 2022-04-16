@@ -39,7 +39,7 @@ export const handler: Handler = async event => {
 
   let token = process.env.ACCESS_TOKEN
   const refreshToken = process.env.REFRESH_TOKEN
-  // console.log(token, refreshToken)
+  console.log(token, refreshToken)
   // console.log(process.env);
 
   if (!(token || refreshToken)) {

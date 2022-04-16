@@ -39,7 +39,7 @@ export const handler: Handler = async (event) => {
       statusCode: 200,
       body: `
 
-        ntl env:set ${tokens.refresh_token}
+        ntl env:set REFRESH_TOKEN ${tokens.refresh_token}
 
         ACCESS_TOKEN=${tokens.access_token}
         REFRESH_TOKEN=${tokens.refresh_token}
