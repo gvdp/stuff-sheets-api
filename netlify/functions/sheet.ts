@@ -6,7 +6,7 @@ import qs from 'qs'
 import { SHEET_IDS } from '../../src/config'
 
 export const handler: Handler = async event => {
-  console.log(event.path.split('/'))
+  console.log('path', event.path.split('/'))
 
   const sheetCode = event.path.split('/')[2]
   const tabTitle = event.path.split('/')[3]

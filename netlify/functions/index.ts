@@ -5,6 +5,7 @@ import { createAuthUrl, fetchTokens } from '../../src/google-tokens'
 export const handler: Handler = async (event) => {
   const { code } = event.queryStringParameters as { code: string }
 
+  console.log('index function');
   console.log('code = ', code);
 
   // const token = process.env.TOKEN
