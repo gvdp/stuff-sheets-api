@@ -1,6 +1,6 @@
 export const SHEET_IDS = {
   ZES: {
-    sheetID: '1yGFVg1I3QYDuNbLVeX3gDeHPFqgPZYBBxssO6ELVyOw',
+    sheetID: '1wffBN8-99L4HXV3EwMI29xzSXhKnCRcyrL263HSMSnk',
     name: '6 Tegen 6'
   },
 
