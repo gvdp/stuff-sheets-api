@@ -1,8 +1,8 @@
 export const SHEET_IDS = {
-  ZES: {
-    sheetID: '1wffBN8-99L4HXV3EwMI29xzSXhKnCRcyrL263HSMSnk',
-    name: '6 Tegen 6'
-  },
+  // ZES: {
+  //   sheetID: '1wffBN8-99L4HXV3EwMI29xzSXhKnCRcyrL263HSMSnk',
+  //   name: '6 Tegen 6'
+  // },
 
 U6:{name: "U6" ,sheetID: 	"1gFNNlEVWeEkTCiivsHvSxJVNxfuCdlnO0G4sUeE71B8"},
 U7:{name: "U7" ,sheetID: 	"1ATM_U9G2LdPrtscVDeJLKXV4Q-dD3LBN6ZM79idGBj8"},
