@@ -57,7 +57,7 @@ export const handler: Handler = async event => {
 
   if (!token) {
     token = await getTokenFromRefresh(refreshToken)
-    // console.log('got token ', token)
+    console.log('got token frome refresh ')
   }
 
   try {
