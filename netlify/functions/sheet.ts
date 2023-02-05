@@ -22,7 +22,7 @@ export const handler: Handler = async event => {
           key,
           url: `/sheet/${key}/`
         }))
-      )
+      , null, 2)
     }
   }
 
@@ -113,7 +113,7 @@ export const handler: Handler = async event => {
       body: JSON.stringify({
         ...(values && { values }),
         sheets
-      })
+      }, null, 2)
     }
   } catch (e) {
     if (axios.isAxiosError(e)) {
