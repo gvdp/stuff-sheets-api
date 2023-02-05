@@ -8,7 +8,7 @@
   "scripts": {
     "start": "BROWSER=none netlify dev",
     "test": "jest",
-    "test:api": "hurl --test --variable baseUrl=http://localhost:8888 sheet.hurl",
+    "test:api": "hurl --test --variable baseUrl=http://localhost:8888 --glob \"*.hurl\"",
     "test:coverage": "nyc --require ts-node/register start-server-and-test start http://localhost:8888/sheet test:api",
     "test:watch": "jest --watch"
   },
