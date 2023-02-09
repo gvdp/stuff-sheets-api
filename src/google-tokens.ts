@@ -1,5 +1,5 @@
 import qs from 'qs'
-import axios, { AxiosRequestConfig } from 'axios'
+import axios, { AxiosError, AxiosRequestConfig } from 'axios'
 
 export function createAuthUrl (redirect_uri: string, scope: string): string {
   let authUrl = 'https://accounts.google.com/o/oauth2/v2/auth'
@@ -16,8 +16,7 @@ export async function fetchTokens (
   code: string,
   redirect_uri: string
 ): Promise<
-  | { expires_in: number; refresh_token: string; access_token: string }
-  | undefined
+   { expires_in: number; refresh_token: string; access_token: string }
 > {
   console.log('getting token using code')
   const params = qs.stringify({
@@ -44,6 +43,8 @@ export async function fetchTokens (
     }
   } catch (e) {
     console.log('error in fetching token', e)
+    throw new Error("Token fetch failed");
+    
   }
 }
 
@@ -66,7 +67,9 @@ export async function getTokenFromRefresh (refreshToken: string) {
     // console.log('got access token', resp.data)
     return resp.data.access_token
   } catch (e) {
-    console.log('err in fetching token ', e.response.data)
+    if(axios.isAxiosError(e)) {
+      console.log('err in fetching token ', (e as AxiosError).response?.data)
+    }
     // console.error(e)
     throw new Error('Token refresh failed ')
   }

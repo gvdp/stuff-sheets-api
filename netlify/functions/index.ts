@@ -30,7 +30,7 @@ export const handler: Handler = async (event) => {
     //   headers: { Authorization: `Bearer ${token}` }
     // })
 
-    const tokens = await fetchTokens(code, 'http://localhost:8888')
+    const tokens = await fetchTokens(code, 'http://localhost:8888') 
     console.log(tokens);
 
 
@@ -50,7 +50,7 @@ export const handler: Handler = async (event) => {
   } catch (e) {
     if(axios.isAxiosError(e)) {
 
-      console.log((e as AxiosError).response.data)
+      console.log((e as AxiosError).response?.data)
     } else {
       console.log(e);
       

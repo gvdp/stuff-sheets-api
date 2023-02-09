@@ -1,4 +1,4 @@
-export const SHEET_IDS = {
+export const SHEET_IDS: Record<string, {name: string, sheetID: string}> = {
   // ZES: {
   //   sheetID: '1wffBN8-99L4HXV3EwMI29xzSXhKnCRcyrL263HSMSnk',
   //   name: '6 Tegen 6'

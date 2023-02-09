@@ -1,4 +1,4 @@
-const wretch = require('wretch')
+import  wretch from 'wretch'
 
 const api = wretch('http://localhost:8888').resolve(r => r.json())
 

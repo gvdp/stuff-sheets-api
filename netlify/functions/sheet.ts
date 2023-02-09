@@ -38,7 +38,7 @@ export const handler: Handler = async event => {
   )
 
   let token = process.env.ACCESS_TOKEN
-  const refreshToken = process.env.REFRESH_TOKEN
+  const refreshToken = process.env.REFRESH_TOKEN as string
   console.log(token, refreshToken)
   // console.log(process.env);
 
@@ -49,13 +49,15 @@ export const handler: Handler = async event => {
         Location: createAuthUrl(
           'http://localhost:8888',
           'https://www.googleapis.com/auth/spreadsheets.readonly'
-        )
+        ),
+                'Cache-Control': ''
+
       }
       // body: createAuthUrl('http://localhost:8888/api/sheet', 'https://www.googleapis.com/auth/spreadsheets.readonly'),
     }
   }
 
-  if (!token) {
+  if (!token && refreshToken) {
     token = await getTokenFromRefresh(refreshToken)
     console.log('got token frome refresh ')
   }
@@ -66,7 +68,7 @@ export const handler: Handler = async event => {
       const range = `${tabTitle}!A1:Z100`
       // console.log('range ', range);
 
-      const response: any = await axios.get(
+      const response = await axios.get<{values: string[][]}>(
         `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}`,
         {
           headers: { Authorization: `Bearer ${token}` }
@@ -95,7 +97,7 @@ export const handler: Handler = async event => {
       // }
     }
 
-    const response: any = await axios.get(
+    const response  = await axios.get<{sheets: {properties: {title: string}}[]}>(
       `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}`,
       {
         headers: { Authorization: `Bearer ${token}` }
@@ -108,6 +110,7 @@ export const handler: Handler = async event => {
     return {
       statusCode: 200,
       headers: {
+        'Location': '',
         'Cache-Control': 'public, s-maxage=60'
       },
       body: JSON.stringify({
