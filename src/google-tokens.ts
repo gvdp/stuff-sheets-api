@@ -20,7 +20,6 @@ export async function fetchTokens(
   refresh_token: string;
   access_token: string;
 }> {
-  console.log("getting token using code");
   const params = qs.stringify({
     code,
     client_id: process.env.GOOGLE_CLIENT_ID,
@@ -28,6 +27,7 @@ export async function fetchTokens(
     redirect_uri,
     grant_type: "authorization_code",
   });
+
   const options: AxiosRequestConfig = {
     method: "POST",
     headers: { "content-type": "application/x-www-form-urlencoded" },
@@ -37,14 +37,13 @@ export async function fetchTokens(
 
   try {
     const resp = await axios.request(options);
-    console.log("got access token", resp.data);
     return {
       access_token: resp.data.access_token,
       refresh_token: resp.data.refresh_token,
       expires_in: resp.data.expires_in,
     };
   } catch (e) {
-    console.log("error in fetching token", e);
+    console.error("error in fetching token", e);
     throw new Error("Token fetch failed");
   }
 }
@@ -65,13 +64,11 @@ export async function getTokenFromRefresh(refreshToken: string) {
 
   try {
     const resp = await axios.request(options);
-    // console.log('got access token', resp.data)
     return resp.data.access_token;
   } catch (e) {
     if (axios.isAxiosError(e)) {
-      console.log("err in fetching token ", (e as AxiosError).response?.data);
+      console.error("err in fetching token ", (e as AxiosError).response?.data);
     }
-    // console.error(e)
     throw new Error("Token refresh failed ");
   }
 }
