@@ -20,7 +20,7 @@ export default {
   collectCoverage: false,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  collectCoverageFrom: ['src/**.ts', 'netlify/functions/**.ts'],
+  collectCoverageFrom: ["src/**.ts", "netlify/functions/**.ts"],
 
   // The directory where Jest should output its coverage files
   coverageDirectory: "coverage",
@@ -174,8 +174,8 @@ export default {
 
   // A map from regular expressions to paths to transformers
   // transform: undefined,
- "transform": {
-    "^.+\\.[t|j]sx?$": "babel-jest"
+  transform: {
+    "^.+\\.[t|j]sx?$": "babel-jest",
   },
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [

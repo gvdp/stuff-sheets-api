@@ -1,17 +1,17 @@
-import { Handler } from '@netlify/functions'
-import axios, { Axios, AxiosError } from 'axios'
-import { createAuthUrl, fetchTokens } from '../../src/google-tokens'
+import { Handler } from "@netlify/functions";
+import axios, { Axios, AxiosError } from "axios";
+import { createAuthUrl, fetchTokens } from "../../src/google-tokens";
 
 export const handler: Handler = async (event) => {
-  const { code } = event.queryStringParameters as { code: string }
+  const { code } = event.queryStringParameters as { code: string };
 
-  console.log('index function');
-  console.log('code = ', code);
+  console.log("index function");
+  console.log("code = ", code);
 
   // const token = process.env.TOKEN
 
-  if(!code) {
-    return {statusCode: 404}
+  if (!code) {
+    return { statusCode: 404 };
   }
   // if (!token) {
   //   return {
@@ -22,7 +22,6 @@ export const handler: Handler = async (event) => {
   // }
 
   try {
-
     // const spreadsheetId = process.env.SHEET_ID
     // const range = 'A1:B3'
 
@@ -30,11 +29,8 @@ export const handler: Handler = async (event) => {
     //   headers: { Authorization: `Bearer ${token}` }
     // })
 
-    const tokens = await fetchTokens(code, 'http://localhost:8888') 
+    const tokens = await fetchTokens(code, "http://localhost:8888");
     console.log(tokens);
-
-
-
 
     return {
       statusCode: 200,
@@ -45,17 +41,14 @@ export const handler: Handler = async (event) => {
         ACCESS_TOKEN=${tokens.access_token}
         REFRESH_TOKEN=${tokens.refresh_token}
         EXPIRES=${String(tokens.expires_in * 1000 + new Date().getTime())}
-      `
-    }
+      `,
+    };
   } catch (e) {
-    if(axios.isAxiosError(e)) {
-
-      console.log((e as AxiosError).response?.data)
+    if (axios.isAxiosError(e)) {
+      console.log((e as AxiosError).response?.data);
     } else {
       console.log(e);
-      
     }
-    return { statusCode: 500 }
+    return { statusCode: 500 };
   }
-}
-
+};

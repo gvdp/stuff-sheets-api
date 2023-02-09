@@ -1,5 +1,5 @@
 {
-    "extends": "@istanbuljs/nyc-config-typescript",
+  "extends": "@istanbuljs/nyc-config-typescript",
   "all": true,
   "reporter": ["text", "html"]
 }

@@ -13,9 +13,6 @@
   => set refresh toke as in response body `ntl env:set REFRESH_TOKEN *****`
   => restart functions
 
-
 ## API
 
 `http://localhost:8888/sheet` => list of possible other uris with correct sheets
-
-
