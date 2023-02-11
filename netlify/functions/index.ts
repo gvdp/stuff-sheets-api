@@ -1,6 +1,6 @@
 import { Handler } from "@netlify/functions";
-import axios, { Axios, AxiosError } from "axios";
-import { createAuthUrl, fetchTokens } from "../../src/google-tokens";
+import axios, { AxiosError } from "axios";
+import { fetchTokens } from "../../src/google-tokens";
 
 export const handler: Handler = async (event) => {
   const { code } = event.queryStringParameters as { code: string };
