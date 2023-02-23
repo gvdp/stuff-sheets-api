@@ -28,7 +28,7 @@
     "*.{js,ts}": "eslint --fix"
   },
   "devDependencies": {
-    "@babel/core": "7.20.12",
+    "@babel/core": "7.21.0",
     "@babel/plugin-transform-modules-commonjs": "7.20.11",
     "@istanbuljs/nyc-config-typescript": "1.0.2",
     "@types/jest": "29.4.0",
