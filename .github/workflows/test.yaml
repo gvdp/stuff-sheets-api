@@ -12,6 +12,10 @@ jobs:
       - uses: volta-cli/action@v4
       - run: yarn
       - run: yarn test:coverage
+        env:
+          GOOGLE_CLIENT_ID: ${{secrets.GOOGLE_CLIENT_ID}}
+          GOOGLE_CLIENT_SECRET: ${{secrets.GOOGLE_CLIENT_SECRET}}
+          REFRESH_TOKEN: ${{secrets.REFRESH_TOKEN}}
 
   lint:
     runs-on: ubuntu-latest
