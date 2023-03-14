@@ -28,11 +28,11 @@
     "*.{js,ts}": "eslint --fix"
   },
   "devDependencies": {
-    "@babel/core": "7.21.0",
+    "@babel/core": "^7.21.3",
     "@babel/plugin-transform-modules-commonjs": "7.21.2",
     "@istanbuljs/nyc-config-typescript": "1.0.2",
-    "@types/jest": "29.4.0",
-    "@types/node": "18.14.6",
+    "@types/jest": "^29.4.1",
+    "@types/node": "^18.15.3",
     "@types/qs": "6.9.7",
     "@typescript-eslint/eslint-plugin": "5.54.1",
     "@typescript-eslint/parser": "5.54.1",
