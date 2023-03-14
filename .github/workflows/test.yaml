@@ -7,10 +7,16 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: volta-cli/action@v4
+      - run: yarn
+      - run: yarn test:coverage
 
+  lint:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: volta-cli/action@v4
       - run: yarn
       - run: yarn lint
-      - run: yarn test:coverage
