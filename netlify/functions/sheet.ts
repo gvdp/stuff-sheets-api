@@ -15,6 +15,8 @@ const client = createClient({
   },
 })
 
+client.on('error', (err) => console.log('Redis Client Error', err))
+
 export const handler: Handler = async (event) => {
   const sheetCode = event.path.split('/')[2]
   const tabTitle = event.path.split('/')[3]
@@ -44,8 +46,10 @@ export const handler: Handler = async (event) => {
     }
   }
 
-  await client.connect()
-
+  console.log('client.isReady', client.isReady)
+  if (!client.isReady) {
+    await client.connect()
+  }
   const myKeyValue = await client.get(key)
   const mysheetsKeyValue = await client.get(sheetsKey)
 
@@ -139,7 +143,7 @@ export const handler: Handler = async (event) => {
       ),
     }
   } catch (e) {
-    await client.quit()
+    await client.disconnect()
 
     if (axios.isAxiosError(e)) {
       console.error('axios error', (e as AxiosError).response?.status)
