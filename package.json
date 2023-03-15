@@ -17,7 +17,8 @@
     "@netlify/functions": "1.4.0",
     "axios": "0.26.0",
     "camel-case": "4.1.2",
-    "qs": "6.11.1"
+    "qs": "6.11.1",
+    "redis": "4.6.5"
   },
   "volta": {
     "node": "18.14.2",
