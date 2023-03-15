@@ -4,7 +4,7 @@
 
 - env vars set in netlify `ntl env:list`
 
-- get sheet info e.g. `http://localhost:8888/sheet/U6/Group%20Games`
+- get sheet info e.g. `http://localhost:8888/sheet/TEST/Group%20Games`
 
 - REFRESH_TOKEN might be bad, `ntl env:unset REFRESH_TOKEN`
 

@@ -8,43 +8,43 @@ describe("sheet call", () => {
       throw new Error(`Call failed with ${error.status}`);
     });
     expect(res).toContainEqual({
-      key: "U6",
-      name: "U6",
-      url: "/sheet/U6/",
+      key: "TEST",
+      name: "TEST",
+      url: "/sheet/TEST/",
     });
   });
   it("can list all the tabs in the sheet", async () => {
-    const res = await api.get("/sheet/U6").catch((error) => {
+    const res = await api.get("/sheet/TEST").catch((error) => {
       throw new Error(`Call failed with ${error.status}`);
     });
     expect(res).toEqual({
       sheets: [
         {
-          url: "/sheet/U6/Teams",
+          url: "/sheet/TEST/Teams",
         },
         {
-          url: "/sheet/U6/Result",
+          url: "/sheet/TEST/Result",
         },
         {
-          url: "/sheet/U6/Group%20Games",
+          url: "/sheet/TEST/Group%20Games",
         },
         {
-          url: "/sheet/U6/Knockout%20Games",
+          url: "/sheet/TEST/Knockout%20Games",
         },
         {
-          url: "/sheet/U6/Calculate%20Schedule",
+          url: "/sheet/TEST/Calculate%20Schedule",
         },
         {
-          url: "/sheet/U6/Calculate%20Knockout",
+          url: "/sheet/TEST/Calculate%20Knockout",
         },
         {
-          url: "/sheet/U6/Per%20team",
+          url: "/sheet/TEST/Per%20team",
         },
       ],
     });
   });
   it("can list all values in a tab", async () => {
-    const res = await api.get("/sheet/U6/Result").catch((error) => {
+    const res = await api.get("/sheet/TEST/Result").catch((error) => {
       throw new Error(`Call failed with ${error.status}`);
     });
     expect(res).toEqual({
@@ -82,25 +82,25 @@ describe("sheet call", () => {
       ],
       sheets: [
         {
-          url: "/sheet/U6/Teams",
+          url: "/sheet/TEST/Teams",
         },
         {
-          url: "/sheet/U6/Result",
+          url: "/sheet/TEST/Result",
         },
         {
-          url: "/sheet/U6/Group%20Games",
+          url: "/sheet/TEST/Group%20Games",
         },
         {
-          url: "/sheet/U6/Knockout%20Games",
+          url: "/sheet/TEST/Knockout%20Games",
         },
         {
-          url: "/sheet/U6/Calculate%20Schedule",
+          url: "/sheet/TEST/Calculate%20Schedule",
         },
         {
-          url: "/sheet/U6/Calculate%20Knockout",
+          url: "/sheet/TEST/Calculate%20Knockout",
         },
         {
-          url: "/sheet/U6/Per%20team",
+          url: "/sheet/TEST/Per%20team",
         },
       ],
     });
