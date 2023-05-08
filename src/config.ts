@@ -1,11 +1,11 @@
 export const SHEET_IDS: Record<string, { name: string; sheetID: string }> = {
   ZES: {
-    sheetID: "1wffBN8-99L4HXV3EwMI29xzSXhKnCRcyrL263HSMSnk",
-    name: "6 Tegen 6",
+    sheetID: '1rc0th8HpglQgUVXRRoK_BbtseT925JYkchFB-bWrtds',
+    name: '6 Tegen 6',
   },
   TEST: {
-    name: "TEST",
-    sheetID: "156ZGnMtCQFmDbQHx4KO_ane9IFnu9Cfx1fHJFX98uQ4",
+    name: 'TEST',
+    sheetID: '156ZGnMtCQFmDbQHx4KO_ane9IFnu9Cfx1fHJFX98uQ4',
   },
   ALGEMEEN: {
     name: "ALGEMEEN",
@@ -22,3 +22,4 @@ export const SHEET_IDS: Record<string, { name: string; sheetID: string }> = {
   U15: { name: "U15", sheetID: "1trXANVIfwcPtOnoUVJjRit_TxCbB2H7a6O_SDjUMBHE" },
   U17: { name: "U17", sheetID: "1QAHrlWQMbEH8brAR3ZoFZTPWoBXtB0l1wFf4RPqIYc8" },
 };
+

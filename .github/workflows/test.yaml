@@ -16,6 +16,8 @@ jobs:
           GOOGLE_CLIENT_ID: ${{secrets.GOOGLE_CLIENT_ID}}
           GOOGLE_CLIENT_SECRET: ${{secrets.GOOGLE_CLIENT_SECRET}}
           REFRESH_TOKEN: ${{secrets.REFRESH_TOKEN}}
+          REDIS_HOST: ${{secrets.REDIS_HOST}}
+          REDIS_KEY: ${{secrets.REDIS_KEY}}
 
   lint:
     runs-on: ubuntu-latest
