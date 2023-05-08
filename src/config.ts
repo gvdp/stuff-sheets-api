@@ -7,6 +7,10 @@ export const SHEET_IDS: Record<string, { name: string; sheetID: string }> = {
     name: "TEST",
     sheetID: "156ZGnMtCQFmDbQHx4KO_ane9IFnu9Cfx1fHJFX98uQ4",
   },
+  ALGEMEEN: {
+    name: "ALGEMEEN",
+    sheetID: "  1GCIsLxqqKZZwy0vQ3NmwTrjclV6DCdKionf_dq9R_Zo",
+  },
   U6: { name: "U6", sheetID: "1TTWcsZZklHMe5grLhuSIj0JdDe3_gQAp_mNt5sJ1GsU" },
   U7: { name: "U7", sheetID: "1qUa2cUi0Qjz9UuNw2_jYoTcGq4pUUx1xquZZZxpAmJY" },
   U8: { name: "U8", sheetID: "1PR_dze_3Z-3N7tdLEauafRzK8I9U5WEhcCFbVPWsDps" },
