@@ -22,7 +22,8 @@ export const handler: Handler = async (event) => {
   const tabTitle = event.path.split('/')[3]
 
   const spreadsheetId = SHEET_IDS[sheetCode]?.sheetID
-  const key = `${sheetCode}-${tabTitle}`
+  // const key = `${sheetCode}-${tabTitle}-${new Date()}`
+  const key = `${sheetCode}-${tabTitle}-${new Date()}`
   const sheetsKey = `${spreadsheetId}-sheets`
 
   // todo: type these
@@ -50,6 +51,7 @@ export const handler: Handler = async (event) => {
   if (!client.isReady) {
     await client.connect()
   }
+  console.log('client.isReady', client.isReady)
   const myKeyValue = await client.get(key)
   const mysheetsKeyValue = await client.get(sheetsKey)
 
@@ -91,6 +93,7 @@ export const handler: Handler = async (event) => {
         },
       )
 
+      console.log('response.data', response.data)
       const keys = response.data.values[0].map((key) => camelCase(key))
 
       values = response.data.values
