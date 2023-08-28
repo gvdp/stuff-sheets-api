@@ -24,3 +24,13 @@
   #  publish = "dist" # Folder with the static content for _redirect file
 
   ## more info on configuring this file: https://www.netlify.com/docs/netlify-toml-reference/
+
+
+[template.environment]
+  GOOGLE_CLIENT_ID = "change me"
+  GOOGLE_CLIENT_SECRET = "change me"
+  ACCESS_TOKEN = "change me"
+  REFRESH_TOKEN = "change me"
+  REDIS_KEY = "change me"
+  REDIS_HOST = "change me"
+

@@ -5,6 +5,9 @@ import { SHEET_IDS } from '../../src/config'
 import { createAuthUrl, getTokenFromRefresh } from '../../src/google-tokens'
 import { createClient } from 'redis'
 
+// todo: this caching mechanism should probably be optional for general purpose use
+
+// todo: use envalid to validate env variables
 const REDIS_KEY = process.env.REDIS_KEY
 const REDIS_HOST = process.env.REDIS_HOST
 const client = createClient({
@@ -22,11 +25,11 @@ export const handler: Handler = async (event) => {
   const tabTitle = event.path.split('/')[3]
 
   const spreadsheetId = SHEET_IDS[sheetCode]?.sheetID
-  // const key = `${sheetCode}-${tabTitle}-${new Date()}`
   const key = `${sheetCode}-${tabTitle}-${new Date()}`
   const sheetsKey = `${spreadsheetId}-sheets`
 
   // todo: type these
+  // todo: there should probably be linting enabled to prevent this?
   let values
   let sheets
 

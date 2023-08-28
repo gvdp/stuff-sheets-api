@@ -16,3 +16,7 @@
 ## API
 
 `http://localhost:8888/sheet` => list of possible other uris with correct sheets
+
+## Deploy your own
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gvdp/sheets-as-an-api)

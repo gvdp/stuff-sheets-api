@@ -1,3 +1,5 @@
+// todo: this should be configurable pre template clone, not included here
+
 export const SHEET_IDS: Record<string, { name: string; sheetID: string }> = {
   ZES: {
     sheetID: '1rc0th8HpglQgUVXRRoK_BbtseT925JYkchFB-bWrtds',
