@@ -102,13 +102,13 @@ export const handler: Handler = async (event) => {
       values = response.data.values
         .slice(1, response.data.values.length)
         .filter((values) => values.length > 0)
-        .map((values) => {
+        .map((values, rowNumber) => {
           return keys.reduce(
             (obj, key, index) => ({
               ...obj,
               [key]: values[index],
             }),
-            {},
+            {id: rowNumber+1}, // todo: use id column if there is one
           )
         })
       await client.set(key, JSON.stringify(values))
