@@ -75,7 +75,12 @@ export const handler: Handler = async (event) => {
     return {
       statusCode: 301,
       headers: {
-        Location: createAuthUrl('http://localhost:8888', 'https://www.googleapis.com/auth/spreadsheets.readonly'),
+        Location: createAuthUrl('http://localhost:8888', 
+        
+        // todo: should be possible to choose between these and allow the PUT update endpoint based on that
+        // 'https://www.googleapis.com/auth/spreadsheets.readonly'
+        'https://www.googleapis.com/auth/spreadsheets'
+        ),
         'Cache-Control': '',
       },
     }

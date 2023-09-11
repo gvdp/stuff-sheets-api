@@ -16,6 +16,12 @@
   status = 200
   to = '/.netlify/functions/sheet/:splat'
 
+[[redirects]]
+  force = true
+  from = '/update/*'
+  status = 200
+  to = '/.netlify/functions/update/:splat'
+
   ## (optional) Settings for Netlify Dev
   ## https://github.com/netlify/cli/blob/main/docs/netlify-dev.md#project-detection
   #[dev]
