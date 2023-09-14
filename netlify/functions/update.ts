@@ -46,7 +46,7 @@ export const handler: Handler = async event => {
     const objectToUpdate = allValues.find(({id}) => id === `${JSON.parse(event.body || "").id}`)
     
     // todo: dynamically set end column (F) based on number of keys
-    const updateRange = `'${decodeURIComponent(tabTitle)}'!A${objectToUpdate?.rowIndex}:F${objectToUpdate?.rowIndex}`
+    const updateRange = `'${decodeURIComponent(tabTitle)}'!A${objectToUpdate?.rowIndex}:Z${objectToUpdate?.rowIndex}`
     const newObject = {...objectToUpdate, ...JSON.parse(event.body || '')}
     const objectToValueArray = keys.map(({key}) => newObject[key] || '')
 
