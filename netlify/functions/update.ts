@@ -34,6 +34,8 @@ export const handler: Handler = async event => {
       key: camelCase(key),
     }))
 
+    console.log('keys', keys);
+
     const allValues: Record<string, string | number>[] = response.data.values.splice(1).map((row, rowIndex) => {
       const keyValueArray = row.map((value, rowIndex) => ({
         value,
@@ -45,6 +47,7 @@ export const handler: Handler = async event => {
     
     const objectToUpdate = allValues.find(({id}) => id === `${JSON.parse(event.body || "").id}`)
     
+    console.log('objectToUpdate', objectToUpdate);
     // todo: dynamically set end column (F) based on number of keys
     const updateRange = `'${decodeURIComponent(tabTitle)}'!A${objectToUpdate?.rowIndex}:Z${objectToUpdate?.rowIndex}`
     const newObject = {...objectToUpdate, ...JSON.parse(event.body || '')}
