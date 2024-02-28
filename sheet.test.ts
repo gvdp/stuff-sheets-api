@@ -2,7 +2,7 @@ import wretch from "wretch";
 
 const api = wretch("http://localhost:8888").resolve((r) => r.json());
 
-describe("sheet call", () => {
+describe("Sanity check for making sure api starts up and links to google sheet correctly", () => {
 
   it("can call sheet api", async () => {
     const res = await api.get("/sheet").catch((error) => {
