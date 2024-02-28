@@ -23,8 +23,8 @@
     "sheets-as-an-api-functions": "0.0.3"
   },
   "volta": {
-    "node": "18.14.2",
-    "yarn": "1.22.19"
+    "node": "20.11.1",
+    "pnpm": "8.10.2"
   },
   "lint-staged": {
     "*": "prettier --write",
