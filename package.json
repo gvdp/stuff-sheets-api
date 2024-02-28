@@ -10,7 +10,6 @@
     "lint": "eslint --ext ts,.js . && tsc",
     "format": "prettier --write .",
     "test": "jest",
-    "test:coverage": "nyc --require ts-node/register start-server-and-test start http://localhost:8888/sheet test",
     "test:watch": "jest --watch"
   },
   "dependencies": {
