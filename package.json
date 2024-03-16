@@ -17,7 +17,7 @@
     "@netlify/functions": "2.6.0",
     "axios": "0.26.0",
     "camel-case": "4.1.2",
-    "change-case": "5.4.0",
+    "change-case": "5.4.3",
     "qs": "6.11.1",
     "redis": "4.6.5",
     "sheets-as-an-api-functions": "0.0.3"
