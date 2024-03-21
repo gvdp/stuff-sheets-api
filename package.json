@@ -7,7 +7,6 @@
   "license": "MIT",
   "scripts": {
     "start": "BROWSER=none netlify dev",
-    "lint": "eslint --ext ts,.js . && tsc",
     "format": "prettier --write .",
     "test": "jest",
     "test:ci": "start-server-and-test start http://localhost:8888/sheet test",
@@ -15,31 +14,18 @@
   },
   "dependencies": {
     "@netlify/functions": "2.6.0",
-    "axios": "0.26.0",
-    "camel-case": "4.1.2",
-    "change-case": "5.4.3",
-    "qs": "6.12.0",
-    "redis": "4.6.13",
-    "sheets-as-an-api-functions": "0.0.3"
+    "sheets-as-an-api-functions": "0.0.4"
   },
   "volta": {
     "node": "20.11.1",
     "pnpm": "8.10.2"
   },
   "lint-staged": {
-    "*": "prettier --write",
-    "*.{js,ts}": "eslint --fix"
+    "*": "prettier --write"
   },
   "devDependencies": {
     "@babel/core": "7.24.0",
     "@babel/plugin-transform-modules-commonjs": "7.23.3",
-    "@types/jest": "29.5.12",
-    "@types/node": "20.11.27",
-    "@types/qs": "6.9.12",
-    "@typescript-eslint/eslint-plugin": "7.2.0",
-    "@typescript-eslint/parser": "7.2.0",
-    "babel-jest": "29.7.0",
-    "eslint": "8.57.0",
     "husky": "9.0.11",
     "jest": "29.7.0",
     "lint-staged": "15.2.2",
