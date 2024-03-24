@@ -9,8 +9,8 @@ dependencies:
     specifier: 2.6.0
     version: 2.6.0
   sheets-as-an-api-functions:
-    specifier: 0.0.6
-    version: 0.0.6(@netlify/functions@2.6.0)
+    specifier: 0.0.8
+    version: 0.0.8(@netlify/functions@2.6.0)
 
 packages:
 
@@ -268,8 +268,8 @@ packages:
       has-property-descriptors: 1.0.2
     dev: false
 
-  /sheets-as-an-api-functions@0.0.6(@netlify/functions@2.6.0):
-    resolution: {integrity: sha512-mml98Z0lrRpEXh+CFYOQOj2Bx5sp3/y6Kn1g6fTAGs6pRExd6NWfexfZVmbyq45o4zO1ThXvI680eXGeGHhpCw==}
+  /sheets-as-an-api-functions@0.0.8(@netlify/functions@2.6.0):
+    resolution: {integrity: sha512-+voJT7VL2uyxevV8UgQGLfMt4ScJnJ0iHGAaacGMQWpaqLLOF/aPdfhHui3wLGqXuq5g+HPGJGLEDoFz68Cx/w==}
     engines: {node: '>=20'}
     peerDependencies:
       '@netlify/functions': ^2.4.0
