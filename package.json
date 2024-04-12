@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@netlify/functions": "2.6.0",
-    "sheets-as-an-api-functions": "0.1.0"
+    "sheets-as-an-api-functions": "0.1.1"
   },
   "volta": {
     "node": "20.11.1",
